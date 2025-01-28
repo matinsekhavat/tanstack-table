@@ -1,5 +1,3 @@
-import { ColumnDef } from "@tanstack/react-table";
-
 export type User = {
   firstName: string;
   lastName: string;
@@ -88,32 +86,5 @@ export const mockUser: User[] = [
     visits: 120,
     progress: 40,
     status: "Single",
-  },
-];
-
-export const tableCols: ColumnDef<User>[] = [
-  {
-    accessorKey: "firstName", // Add this line
-    header: "First Name",
-  },
-  {
-    accessorKey: "lastName", // Add this line
-    header: "Last Name",
-  },
-  {
-    accessorKey: "age",
-    header: "Age",
-  },
-  {
-    accessorKey: "visits",
-    header: "Visits",
-  },
-  {
-    accessorKey: "progress",
-    header: "Progress",
-  },
-  {
-    accessorKey: "status",
-    header: "Status",
   },
 ];
