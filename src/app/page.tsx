@@ -1,13 +1,15 @@
 "use client";
-import { mockUser, tableCols, User } from "@/services/data";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/ui/Table";
+import { tableCols } from "@/lib/tanstack-helper";
+import { mockUser, User } from "@/services/data";
+
+// import {
+//   Table,
+//   TableBody,
+//   TableCell,
+//   TableHead,
+//   TableHeader,
+//   TableRow,
+// } from "@/ui/Table";
 import {
   flexRender,
   getCoreRowModel,
@@ -26,34 +28,33 @@ function Page() {
 
   return (
     <div className="overflow-auto">
-      <Table className="w-[600px] mx-auto">
-        <TableHeader>
+      <table className="min-w-[600px] mx-auto border-collapse border border-slate-400">
+        <thead>
           {table.getHeaderGroups().map((headerGroup) => (
-            <TableRow key={headerGroup.id}>
+            <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
-                <TableHead key={header.id}>
+                <th key={header.id} className="border border-slate-400 p-2">
                   {flexRender(
                     header.column.columnDef.header,
                     header.getContext()
                   )}
-                </TableHead>
+                </th>
               ))}
-            </TableRow>
+            </tr>
           ))}
-        </TableHeader>
-        <TableBody>
+        </thead>
+        <tbody>
           {table.getRowModel().rows.map((row) => (
-            <TableRow key={row.id}>
+            <tr key={row.id}>
               {row.getVisibleCells().map((cell) => (
-                <TableCell key={cell.id}>
+                <td key={cell.id} className="border border-slate-400 p-2">
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  {/* {cell.getValue()} */}
-                </TableCell>
+                </td>
               ))}
-            </TableRow>
+            </tr>
           ))}
-        </TableBody>
-      </Table>
+        </tbody>
+      </table>
     </div>
   );
 }
